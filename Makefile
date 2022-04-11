@@ -11,3 +11,6 @@ down:
 
 logs:
 	docker logs -f fw-service-template
+
+tests:
+	docker logs -f fw-service-template-test

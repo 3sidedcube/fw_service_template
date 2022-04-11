@@ -18,8 +18,8 @@ const loadAPI = (app: Koa, path: string, pathApi?: string) => {
     const newPath = path ? `${path}/${file}` : file;
     const stat = fs.statSync(newPath);
     if (!stat.isDirectory()) {
-      if (file.lastIndexOf(".router.js") !== -1) {
-        if (file === "index.router.js") {
+      if (file.lastIndexOf(".router.js") !== -1 || file.lastIndexOf(".router.ts") !== -1) {
+        if (file === "index.router.ts" || file === "index.router.ts") {
           existIndexRouter = true;
         } else {
           logger.debug("Loading route %s, in path %s", newPath, pathApi);
@@ -37,8 +37,8 @@ const loadAPI = (app: Koa, path: string, pathApi?: string) => {
     }
   });
   if (existIndexRouter) {
-    // load indexRouter when finish other Router
-    const newPath = path ? `${path}/indexRouter.js` : "indexRouter.js";
+    // load index.router.ts when finished other Routers
+    const newPath = path ? `${path}/index.router` : "index.router";
     logger.debug("Loading route %s, in path %s", newPath, pathApi);
     if (pathApi) {
       app.use(mount(pathApi, requireESModuleDefault(newPath).middleware()));
