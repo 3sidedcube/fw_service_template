@@ -1,16 +1,9 @@
 import Koa from "koa";
-import Router from "koa-router";
+import loaderRoutes from "./loaderRoutes";
 
 const app = new Koa();
 
-const router = new Router();
-
-router.get("/ping", ctx => {
-  ctx.status = 200;
-  ctx.body = "pong";
-});
-
-app.use(router.routes());
+loaderRoutes(app);
 
 const server = app.listen(3000, () => console.log("Listening on PORT: 3000"));
 

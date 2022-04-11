@@ -6,5 +6,6 @@ services:
     container_name: fw-service-template
     volumes:
       - ./app:/opt/fw-service-template/app
+      - ./config:/opt/fw-service-template/config
       - ./nodemon.json:/opt/fw-service-template/nodemon.json
     command: yarn dev

@@ -13,9 +13,8 @@ COPY package.json ./
 COPY yarn.lock ./
 RUN yarn install
 
-# COPY config /opt/$NAME/config
-
 COPY ./app ./app
+COPY ./config ./config
 COPY ./.babelrc ./
 COPY ./tsconfig.json ./
 RUN yarn build
