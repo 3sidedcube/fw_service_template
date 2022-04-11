@@ -1,3 +1,25 @@
-FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8-slim
+FROM node:16.14.2-alpine3.15
+MAINTAINER server@3sidedcube.com
 
-COPY ./app /app/app
+ENV NAME fw-service-template
+ENV USER fw-service-template
+
+RUN addgroup $USER && adduser -S -G $USER $USER
+USER $USER
+
+WORKDIR /opt/$NAME
+
+COPY package.json ./
+COPY yarn.lock ./
+RUN yarn install
+
+# COPY config /opt/$NAME/config
+
+COPY ./app ./app
+COPY ./.babelrc ./
+COPY ./tsconfig.json ./
+RUN yarn build
+
+EXPOSE 3000
+
+CMD ["node", "dist/app.js"]

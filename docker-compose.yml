@@ -1,0 +1,10 @@
+services:
+  develop:
+    build: .
+    ports:
+      - "3000:3000"
+    container_name: fw-service-template
+    volumes:
+      - ./app:/opt/fw-service-template/app
+      - ./nodemon.json:/opt/fw-service-template/nodemon.json
+    command: yarn dev
