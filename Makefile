@@ -9,6 +9,9 @@ up:
 down:
 	docker-compose down
 
+lint:
+	docker-compose run develop yarn run lint
+
 logs:
 	docker logs -f fw-service-template
 
