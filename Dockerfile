@@ -19,6 +19,8 @@ COPY ./.babelrc ./
 COPY ./tsconfig.json ./
 RUN yarn build
 
+RUN chown -R $USER:$USER /opt/$NAME
+
 EXPOSE 3000
 
 CMD ["node", "dist/app.js"]
