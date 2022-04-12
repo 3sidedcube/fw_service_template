@@ -1,0 +1,32 @@
+services:
+  develop:
+    build: .
+    ports:
+      - "3000:3000"
+    container_name: fw-service-template
+    environment:
+      PORT: 3000
+    volumes:
+      - ./app:/opt/fw-service-template/app
+      - ./config:/opt/fw-service-template/config
+      - ./nodemon.json:/opt/fw-service-template/nodemon.json
+    command: yarn dev
+
+  test:
+    build: .
+    container_name: fw-service-template-test
+    volumes:
+      - ./app:/opt/fw-service-template/app
+      - ./config:/opt/fw-service-template/config
+      - ./nodemon.json:/opt/fw-service-template/nodemon.json
+      - ./jest.config.js:/opt/fw-service-template/jest.config.js
+    command: yarn test
+
+  docs:
+    build: .
+    ports:
+      - "30000:30000"
+    container_name: fw-service-template-docs
+    volumes:
+      - ./docs:/opt/fw-service-template/docs
+    command: yarn run docs -l 30000

@@ -1,6 +1,6 @@
 # Forest Watcher Service Template
 
-This repository can be used as code template for new forest watcher services.
+This repository can be used as code template for new forest watcher microservices.
 It will deploy a dockerized application on AWS fargate and expose endpoints under the public URL
 
 - fw-api.globalforestwatch.org
@@ -9,8 +9,18 @@ It will deploy a dockerized application on AWS fargate and expose endpoints unde
 
 for production, staging and dev environments correspondingly.
 
-The application itself can be written in any language. Only requirement is that it must provide http/ rest endpoints.
-Application code may be located in the `app` or `src` folder. The Dockerfile should always be place at the root of the repository.
+The application itself is written in [Nodejs](https://nodejs.org/). Application code must be located in the `app/src` folder. The Dockerfile should always be place at the root of the repository.
+
+The app is a [Koa v2](https://koajs.com/) application with TypeScript support. Which is structured like so:
+```markdown
+- app/src               # Source code for the service
+    - /models           # Database ORM/ODM models
+    - /routes           # Routers for the service
+    - /serializers      # Serialisers for response object
+    - /services         # Reusable services
+    - /validators       # Validators for request objects
+    app.ts              # Root for the app
+```
 
 ## Terraform
 
@@ -76,3 +86,41 @@ when ever a commit is pushed to one of the branches.
 
 Pull requests against the branches will trigger a terraform plan action, and the planned infrastructure changes will be displayed first.
 It is highly recommended to always work in a feature branch and to make a pull request again the `dev` branch first.
+
+## Installation
+
+Use [degit](https://github.com/Rich-Harris/degit) to scaffold a new repository, first install `degit` globally
+```shell
+npm install -g degit
+```
+Then scaffold a new repository using the template
+```shell
+degit git@github.com:3sidedcube/fw_service_template my-new-fw-service
+```
+Initialise git
+```shell
+cd my-new-fw-service
+git init
+```
+Rename the master branch to `production`
+```shell
+git branch -m production
+```
+Create an initial commit to production
+```shell
+git add .
+git commit -m "Init"
+```
+Create two new branches
+```shell
+git branch staging production
+git branch dev production
+```
+Push the local repository to WRI's remote repository, you will need to get them to set a blank one up
+```shell
+git remote add origin git@github.com:wri/<...>.git
+git push -u origin production
+git push -u origin staging
+git push -u origin dev
+```
+You should all be setup, happy hacking 💚
