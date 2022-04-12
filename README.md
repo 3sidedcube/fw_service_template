@@ -1,6 +1,6 @@
 # Forest Watcher Service Template
 
-This repository can be used as code template for new forest watcher services.
+This repository can be used as code template for new forest watcher microservices.
 It will deploy a dockerized application on AWS fargate and expose endpoints under the public URL
 
 - fw-api.globalforestwatch.org
@@ -9,8 +9,18 @@ It will deploy a dockerized application on AWS fargate and expose endpoints unde
 
 for production, staging and dev environments correspondingly.
 
-The application itself can be written in any language. Only requirement is that it must provide http/ rest endpoints.
-Application code may be located in the `app` or `src` folder. The Dockerfile should always be place at the root of the repository.
+The application itself is written in [Nodejs](https://nodejs.org/). Application code must be located in the `app/src` folder. The Dockerfile should always be place at the root of the repository.
+
+The app is a [Koa v2](https://koajs.com/) application with TypeScript support. Which is structured like so:
+```markdown
+- app/src               # Source code for the service
+    - /models           # Database ORM/ODM models
+    - /routes           # Routers for the service
+    - /serializers      # Serialisers for response object
+    - /services         # Reusable services
+    - /validators       # Validators for request objects
+    app.ts              # Root for the app
+```
 
 ## Terraform
 
