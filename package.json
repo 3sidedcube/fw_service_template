@@ -11,7 +11,8 @@
     "start": "yarn run build && node dist/app.js",
     "restart": "rimraf dist && yarn run start",
     "dev": "nodemon --exec yarn run restart",
-    "test": "NODE_ENV=test jest --watchAll"
+    "test": "NODE_ENV=test jest --watchAll",
+    "docs": "serve docs"
   },
   "dependencies": {
     "bunyan": "^1.8.15",
@@ -44,6 +45,7 @@
     "nodemon": "^2.0.15",
     "prettier": "^2.6.2",
     "rimraf": "^3.0.2",
+    "serve": "^13.0.2",
     "supertest": "^6.2.2",
     "ts-jest": "^27.1.4",
     "typescript": "^4.6.3"
