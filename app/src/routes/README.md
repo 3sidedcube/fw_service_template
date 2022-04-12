@@ -2,7 +2,7 @@
 
 Any routes for the app, should include the `.router.ts` extension.
 
-The default export **much** be a `Router` object from the `koa-router` package.
+The default export **must** be a `Router` object from the `koa-router` package.
 
 Any default exported function found in files within this folder will automatically be used as a middleware functions for the Koa app. No need to import them elsewhere!
 
