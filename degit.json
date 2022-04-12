@@ -1,0 +1,10 @@
+[
+  {
+    "action": "remove",
+    "files": ["README.md"]
+  },
+  {
+    "action": "clone",
+    "src": "3sidedcube/fw_service_readme_template"
+  }
+]
