@@ -5,7 +5,6 @@ ENV NAME fw-service-template
 ENV USER fw-service-template
 
 RUN addgroup $USER && adduser -S -G $USER $USER
-USER $USER
 
 WORKDIR /opt/$NAME
 
@@ -20,6 +19,7 @@ COPY ./tsconfig.json ./
 RUN yarn build
 
 RUN chown -R $USER:$USER /opt/$NAME
+USER $USER
 
 EXPOSE 3000
 
