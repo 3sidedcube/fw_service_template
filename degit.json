@@ -1,0 +1,10 @@
+[
+  {
+    "action": "clone",
+    "src": "3sidedcube/fw_service_readme_template"
+  },
+  {
+    "action": "remove",
+    "files": ["degit.json"]
+  }
+]
