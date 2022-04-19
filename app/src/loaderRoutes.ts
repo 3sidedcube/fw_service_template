@@ -6,6 +6,7 @@ import mount from "koa-mount";
 const routersPath = `${__dirname}/routes`;
 
 const requireESModuleDefault = (path: string) => {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   const module = require(path);
   return module.__esModule ? module.default : module;
 };
