@@ -1,8 +1,8 @@
 FROM node:16.14.2-alpine3.15
 MAINTAINER server@3sidedcube.com
 
-ENV NAME fw-service-template
-ENV USER fw-service-template
+ENV NAME fw-service-template # TODO: Update name in final service
+ENV USER fw-service-template # TODO: Update name in final service
 
 RUN addgroup $USER && adduser -S -G $USER $USER
 
