@@ -4,7 +4,7 @@ This repository can be used as code template for new forest watcher microservice
 
 Please read more about what's included in the template [here](https://github.com/3sidedcube/fw_service_readme_template).
 
-While following the installation steps below [degit](https://github.com/Rich-Harris/degit) will **replace** this README file with the README file [here](https://github.com/3sidedcube/fw_service_readme_template), to learn more about this step [click here](https://github.com/Rich-Harris/degit#actions). 
+While following the installation steps below [degit](https://github.com/Rich-Harris/degit) will **replace** this README file with the README file [here](https://github.com/3sidedcube/fw_service_readme_template), to learn more about this step [click here](https://github.com/Rich-Harris/degit#actions).
 
 ## Installation
 
