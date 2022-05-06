@@ -2,9 +2,6 @@ FROM node:16.14.2-alpine3.15
 MAINTAINER server@3sidedcube.com
 
 ENV NAME fw-service-template # TODO: Update name in final service
-ENV USER fw-service-template # TODO: Update name in final service
-
-RUN addgroup $USER && adduser -S -G $USER $USER
 
 WORKDIR /opt/$NAME
 
@@ -18,9 +15,6 @@ COPY ./.babelrc ./
 COPY ./.eslintrc.yml ./.eslintrc.yml
 COPY ./tsconfig.json ./
 RUN yarn build
-
-RUN chown -R $USER:$USER /opt/$NAME
-USER $USER
 
 EXPOSE 3000
 
