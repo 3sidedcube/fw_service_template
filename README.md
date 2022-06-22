@@ -63,14 +63,17 @@ Update the constants in `js/changeEnvironment.js` replacing `<...>` with the nam
 ```javascript
 const ENV = [
     {
+        value: "production",
         selector: "#switch-prod",
         docsURL: "https://raw.githubusercontent.com/wri/<...>/production/docs/<...>.yaml"
     },
     {
+        value: "staging",
         selector: "#switch-staging",
         docsURL: "https://raw.githubusercontent.com/wri/<...>/staging/docs/<...>.yaml"
     },
     {
+        value: "dev",
         selector: "#switch-dev",
         docsURL: "https://raw.githubusercontent.com/wri/<...>/dev/docs/<...>.yaml"
     }
