@@ -21,6 +21,8 @@ Initialise git
 cd my-new-fw-service
 git init
 ```
+Rename `docs/fw_service_template.yaml` to the name of the new service, for example `fw_user.yaml`
+
 Rename the master branch to `production`
 ```shell
 git branch -m production
@@ -42,4 +44,51 @@ git push -u origin production
 git push -u origin staging
 git push -u origin dev
 ```
-You should all be setup, happy hacking 💚
+
+You should all be setup, read the new README file to understand the next steps!
+
+### GitHub pages docs
+If you wish to host the OpenAPI docs using GitHub pages follow the steps below:
+
+Create a blank branch called `gh_pages_docs`
+```shell
+git checkout --orphan gh_pages_docs
+git rm -rf .
+```
+Copy the docs template into the empty branch
+```shell
+degit --force git@github.com:3sidedcube/fw_service_template#gh_pages_docs
+```
+Update the constants in `js/changeEnvironment.js` replacing `<...>` with the name of the remote repository and the name of the yaml doc file you renamed earlier
+```javascript
+const ENV = [
+    {
+        selector: "#switch-prod",
+        docsURL: "https://raw.githubusercontent.com/wri/<...>/production/docs/<...>.yaml"
+    },
+    {
+        selector: "#switch-staging",
+        docsURL: "https://raw.githubusercontent.com/wri/<...>/staging/docs/<...>.yaml"
+    },
+    {
+        selector: "#switch-dev",
+        docsURL: "https://raw.githubusercontent.com/wri/<...>/dev/docs/<...>.yaml"
+    }
+]
+```
+Create an initial commit to the `gh_pages_docs` branch
+```shell
+git add .
+git commit -m "Init"
+```
+And push to WRI's remote repository
+```shell
+git push -u origin gh_pages_docs
+```
+In the repository on GitHub go to
+> Settings > Pages
+
+Select `gh_pages_docs` as the source branch, leave the folder as `/(root)` and press save.\
+Once the GitHub page is published it should be available at the URL displayed in the settings.
+
+Made with 💚 at 3 Sided Cube
