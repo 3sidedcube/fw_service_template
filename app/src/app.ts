@@ -5,6 +5,13 @@ import loaderRoutes from "./loaderRoutes";
 
 const app = new Koa();
 
+// Private cache for every route
+app.use((ctx, next) => {
+  return next().then(function () {
+    ctx.set("Cache-Control", "private");
+  });
+});
+
 loaderRoutes(app);
 
 const port = config.get("service.port");
